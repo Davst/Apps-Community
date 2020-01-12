@@ -16,8 +16,8 @@
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'deconz'
-        intport: '80'
-        extport: '80'
+        intport: '8100'
+        extport: '8100'
         intport2: '8443'
         extport2: '8443'
         image: 'marthoc/deconz'
@@ -57,6 +57,7 @@
           PGID: '1000'
           DECONZ_DEVICE: '/dev/ttyACM0'
           DECONZ_VNC_MODE: '0'
+          DECONZ_WEB_PORT: '8100'
           DECONZ_WS_PORT: '8443'
           DECONZ_UPNP: '0'
 
