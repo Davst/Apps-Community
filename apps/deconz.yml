@@ -60,6 +60,11 @@
           DECONZ_WEB_PORT: '8100'
           DECONZ_WS_PORT: '8443'
           DECONZ_UPNP: '0'
+          DEBUG_INFO: '1'
+          DEBUG_APS: '0'
+          DEBUG_ZCL: '0'
+          DEBUG_ZDP: '0'
+          DEBUG_OTAU: '0'
 
     # MAIN DEPLOYMENT #############################################################
     - name: 'Deploying {{pgrole}}'
@@ -72,10 +77,8 @@
           - '{{ports.stdout}}{{extport2}}:{{intport2}}'
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
-        restart_policy: unless-stopped
-        networks:
-          - name: plexguide
-            aliases:
-              - '{{pgrole}}'
+        restart_policy: always
+        devices: '/dev/ttyACM0'
+        network_mode: 'host'
         state: started
         labels: '{{pg_labels}}'
