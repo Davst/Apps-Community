@@ -1,11 +1,8 @@
 #!/bin/bash
 #
-# This Docker image containerizes the deCONZ software from Dresden Elektronik, 
-# which controls a ZigBee network using a Conbee USB or RaspBee GPIO serial interface. 
-# This image runs deCONZ in "minimal" mode, for control of the ZigBee network via the
-# WebUIs ("Wireless Light Control" and "Phoscon") and over the REST API and Websockets,
-# and optionally runs a VNC server for viewing and interacting with the ZigBee mesh 
-# through the deCONZ UI.
+# AppDaemon is a loosely coupled, multithreaded, sandboxed python execution environment 
+# for writing automation apps for home automation projects, and any environment that 
+# requires a robust event driven architecture.
 #
 ################################################################################
 ---
@@ -67,7 +64,6 @@
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: always
-        devices: '/dev/ttyACM0'
         networks:
           - name: plexguide
             aliases:
