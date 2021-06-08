@@ -13,8 +13,8 @@
     - name: "Set Known Facts"
       set_fact:
         pgrole: "esphome"
-        intport: "6053"
-        extport: "6053"
+        intport: "6052"
+        extport: "6052"
         image: "esphome/esphome"
 
     # CORE (MANDATORY) ############################################################
