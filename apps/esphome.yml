@@ -14,9 +14,8 @@
       set_fact:
         pgrole: "esphome"
         intport: "6052"
-        extport: "6053"
-        intport2: "6052"
-        extport2: "6053"
+        extport: "6052"
+        intport2: "6053"
         image: "esphome/esphome"
 
     # CORE (MANDATORY) ############################################################
