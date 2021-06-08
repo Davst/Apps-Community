@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Title:      PGBlitz (Reference Title File)
-# Author(s):  Admin9705
+# Title:      PGBlitz (esphome)
+# Author(s):  MrDoob
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
@@ -14,7 +14,9 @@
       set_fact:
         pgrole: "esphome"
         intport: "6052"
-        extport: "6052"
+        extport: "6053"
+        intport2: "6052"
+        extport2: "6053"
         image: "esphome/esphome"
 
     # CORE (MANDATORY) ############################################################
@@ -42,7 +44,11 @@
     - name: "Setting {{pgrole}} Volumes"
       set_fact:
         pg_volumes:
-          - "/var/run/docker.sock:/var/run/docker.sock"
+          - "/opt/appdata/{{pgrole}}:/config:rw"
+          - "{{path.stdout}}:{{path.stdout}}"
+          - "/mnt/unionfs:/unionfs:rw"
+          - "/etc/localtime:/etc/localtime:ro"
+          - "/mnt/unionfs/library:/library:rw"
 
     - name: "Setting {{pgrole}} ENV"
       set_fact:
@@ -58,6 +64,7 @@
         pull: yes
         published_ports:
           - "{{ports.stdout}}{{extport}}:{{intport}}"
+          - "{{ports.stdout}}{{extport2}}:{{intport2}}"
         volumes: "{{pg_volumes}}"
         env: "{{pg_env}}"
         restart_policy: unless-stopped
