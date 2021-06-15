@@ -12,7 +12,7 @@
     # FACTS #######################################################################
     - name: "Set Known Facts"
       set_fact:
-        pgrole: "HA_Dockermon"
+        pgrole: "hadockermon"
         intport: "8126"
         extport: "8126"
         image: "philhawthorne/ha-dockermon"
